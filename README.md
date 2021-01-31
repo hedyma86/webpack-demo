@@ -97,4 +97,19 @@ Object.defineProperty(this,'x',{
  });
 
  ```
-### 
+
+### 开发环境调试
+
+- 我们在开发环境对sourceMap的要求是：速度快，调试更友好
+- 要想速度快 推荐 eval-cheap-source-map
+- 如果想调试更友好 cheap-module-source-map
+- 折中的选择就是 eval-source-map
+### 生产环境调试
+- 首先排除内联，因为一方面我们了隐藏源代码，另一方面要减少文件体积
+- 要想调试友好 sourcemap>cheap-source-map/
+- cheap-module-source-map>hidden-source-map/nosources-sourcemap
+- 要想速度快 优先选择cheap
+- 折中的选择就是 hidden-source-map 隐藏source-map
+
+> webpack打包仍然生成sourceMap，但是将map文件挑出放到本地服务器，将不含有map文件的部署到服务器
+> webpack.SourceMapDevToolPlugin  或 fiddler

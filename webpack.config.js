@@ -2,12 +2,16 @@
  * @description:webpack config file introduce
  * @Author: Hedy Ma
  * @Date: 2021-01-31 11:54:25
- * @LastEditTime: 2021-01-31 21:57:55
+ * @LastEditTime: 2021-01-31 22:48:26
  */ 
-
 
 module.exports={
   mode:'development',        //打包模式，三种 none|development|production，默认为production ----------说明①
+  //source-map 包含全部信息
+  //cheap-module-source-map 不包含列信息，但包含loader映射 
+  //cheap-source-map 不包含 列 信息，也不包含loader的map。比如es6=》es5的map。
+ //eaval(快) cheap（不包含列和loader） inline（行内，不生成map文件） source-map module（映射loader） 这些词互相组装成属性
+  devtool:'cheap-module-eval-source-map',     //cheap-source-map 不包含 列 信息，也不包含loader的map。比如es6=》es5的map。source-map包含全部信息
   entry:"src/index.js",          //一个入口文件
  /* entry:{                 //多个入口文件
       app:'./src/app.js',
@@ -87,7 +91,10 @@ module.exports={
               }
           }]            
       ]
-  }
+  },
+  pluginsL[
+
+  ]
 
 }
 
